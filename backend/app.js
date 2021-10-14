@@ -7,8 +7,9 @@ const userRoutes = require('./routes/user');
 const path = require('path');
 
 const app = express();
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://0KlyOltN6j5j7FY7:0KlyOltN6j5j7FY7@cluster0.uw2ct.mongodb.net/hotTakes?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
